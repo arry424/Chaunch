@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8vgypldjsf7i"]
+[gd_scene load_steps=5 format=3 uid="uid://c8vgypldjsf7i"]
+
+[ext_resource type="Texture2D" uid="uid://cclpgoi40qr4i" path="res://assets/LNO_assets_textures/textures/water-texure.png" id="1_2fu1g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oiiq8"]
 size = Vector3(60, 2, 60)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3tdp"]
+albedo_texture = ExtResource("1_2fu1g")
+
 [sub_resource type="BoxMesh" id="BoxMesh_g8576"]
+material = SubResource("StandardMaterial3D_y3tdp")
 size = Vector3(60, 2, 60)
 
 [node name="Ground" type="StaticBody3D"]
