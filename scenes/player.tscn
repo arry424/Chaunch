@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdt2hutstrwhb"]
+
+[ext_resource type="Script" path="res://code/player.gd" id="1_crpbl"]
+[ext_resource type="Texture2D" uid="uid://benlvj77o0xp8" path="res://assets/icon.svg" id="2_ltdxg"]
+[ext_resource type="PackedScene" uid="uid://dh3c8ksu4np6l" path="res://scenes/chain_object.tscn" id="3_dynhj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w3mry"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_crpbl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_w3mry")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.78027, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("2_ltdxg")
+
+[node name="ChainObject" parent="." instance=ExtResource("3_dynhj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="CollisionShape3D" parent="ChainObject" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Sprite3D" parent="ChainObject" index="1"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[editable path="ChainObject"]

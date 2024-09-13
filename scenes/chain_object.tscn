@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh3c8ksu4np6l"]
+
+[ext_resource type="Texture2D" uid="uid://benlvj77o0xp8" path="res://assets/icon.svg" id="1_pmirg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aehym"]
+radius = 0.75
+
+[node name="ChainObject" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_aehym")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_pmirg")
