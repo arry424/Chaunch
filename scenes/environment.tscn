@@ -1,16 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8vgypldjsf7i"]
+[gd_scene load_steps=7 format=3 uid="uid://c8vgypldjsf7i"]
 
 [ext_resource type="Texture2D" uid="uid://cclpgoi40qr4i" path="res://assets/LNO_assets_textures/textures/water-texure.png" id="1_2fu1g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oiiq8"]
-size = Vector3(60, 2, 60)
+size = Vector3(46, 2, 46)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3tdp"]
 albedo_texture = ExtResource("1_2fu1g")
 
 [sub_resource type="BoxMesh" id="BoxMesh_g8576"]
 material = SubResource("StandardMaterial3D_y3tdp")
-size = Vector3(60, 2, 60)
+size = Vector3(46, 2, 46)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n3foi"]
+size = Vector3(1, 9.74609, 8.21106)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_akmdh"]
+size = Vector3(0.674316, 10.1515, 8.85577)
 
 [node name="Ground" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -1, 2.08165e-12)
@@ -22,3 +28,19 @@ shape = SubResource("BoxShape3D_oiiq8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_g8576")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(7.56, 0, 0, 0, 7.56, 0, 0, 0, 7.56, -26.2891, 33.0602, 0.675989)
+shape = SubResource("BoxShape3D_n3foi")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(7.56, 0, 0, 0, 7.56, 0, 0, 0, 7.56, 25.0538, 34.9068, 0.32346)
+shape = SubResource("BoxShape3D_akmdh")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(-3.30458e-07, 0, 7.56, 0, 7.56, 0, -7.56, 0, -3.30458e-07, -1.10168, 33.7766, -25.0589)
+shape = SubResource("BoxShape3D_akmdh")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(-3.30458e-07, 0, 7.56, 0, 7.56, 0, -7.56, 0, -3.30458e-07, -1.10168, 34.5926, 25.5289)
+shape = SubResource("BoxShape3D_akmdh")

@@ -78,5 +78,5 @@ func _process(delta):
 		is_sprinting = false
 		
 	#_rotate_camera(delta)
-	rotation.y -= Input.get_axis(rotate_left, rotate_right) * 0.5
+	rotation.y -= Input.get_axis(rotate_left, rotate_right) * 0.1
 

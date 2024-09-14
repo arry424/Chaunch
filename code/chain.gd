@@ -40,7 +40,7 @@ func _process(delta):
 		var direction_vector = ray.get_target_position()
 		#direction_vector = direction_vector.normalized()  # Normalize for unit length
 		print(direction_vector)
-		last_held_object.set_axis_velocity(Vector3(direction_vector.x * 1.5, 2, direction_vector.z * 1.5))
+		last_held_object.set_axis_velocity(Vector3(direction_vector.x * 3, 2, direction_vector.z * 3))
 		canPickUp = true
 
 
