@@ -49,7 +49,7 @@ func _rotate_camera(delta: float, sens_mod: float = 1.0):
 	var input = Input.get_vector("look_left","look_right","look_up","look_down")
 	look_dir += input
 	rotation.y -= look_dir.x * camera_sens * delta
-	print(rotation.y)
+	#print(rotation.y)
 	#camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod* delta, -90, 90)
 	look_dir = Vector2.ZERO
 	

@@ -7,6 +7,7 @@ var is_colliding = false
 @onready var ray = $RayCast3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ray.target_position = Vector3(0,0,10)
 	#contact_monitor = true
 	#max_contacts_reported = 1
 	pass
@@ -23,9 +24,14 @@ func _process(delta):
 	if Input.is_action_pressed("throw") && !canPickUp:
 		last_held_object.reparent(get_tree().root)
 		last_held_object.freeze = false
-		var direction_vector = self.transform.origin
-		direction_vector = direction_vector.normalized()  # Normalize for unit length
-		last_held_object.set_axis_velocity(direction_vector)
+		var distance = 10
+		var local_direction = Vector3(0, 0, -1)  # Local direction, forward
+		var world_direction = global_transform.basis * local_direction 
+		ray.target_position = world_direction * distance
+		var direction_vector = ray.get_target_position()
+		#direction_vector = direction_vector.normalized()  # Normalize for unit length
+		print(direction_vector)
+		last_held_object.set_axis_velocity(Vector3(direction_vector.x, 10, direction_vector.z))
 		canPickUp = true
 
 
