@@ -17,4 +17,6 @@ func _on_hitbox_body_entered(body):
 	print("Hit")
 	body.hp -= mass
 	print(body.hp)
+	hitbox.set_collision_mask_value(1, false)
+	hitbox.set_collision_mask_value(2, false)
 
