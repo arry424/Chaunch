@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhwe6cv8dbre3"]
+
+[ext_resource type="Script" path="res://code/throwable.gd" id="1_0o142"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_25hgg"]
+radius = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yhpyn"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ntl3t"]
+
+[node name="rock" type="RigidBody3D"]
+collision_layer = 64
+collision_mask = 195
+script = ExtResource("1_0o142")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 64
+collision_mask = 0
+angular_damp_space_override = 1
+angular_damp = 59.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1.085, 0, 0, 0, 1.085, 0, 0, 0, 1.085, 0, 0, 0)
+shape = SubResource("SphereShape3D_25hgg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_yhpyn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ntl3t")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

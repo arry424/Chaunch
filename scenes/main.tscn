@@ -48,8 +48,10 @@ move_forward = "move_forward_2"
 move_back = "move_back_2"
 sprint = "sprint_2"
 jump = "jump_2"
+rotate_left = "rotate_left_2"
+rotate_right = "rotate_right_2"
 
-[node name="Chain" parent="GridContainer/SubViewportContainer2/SubViewport/Player2" index="1"]
+[node name="Chain" parent="GridContainer/SubViewportContainer2/SubViewport/Player2" index="2"]
 pick_up = "pick_up_2"
 throw = "throw_2"
 

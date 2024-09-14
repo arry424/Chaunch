@@ -10,7 +10,8 @@ var is_player_one = true
 @export var move_back = "move_back"
 @export var sprint = "sprint"
 @export var jump = "jump"
-
+@export var rotate_left = "rotate_left"
+@export var rotate_right = "rotate_right"
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -53,20 +54,22 @@ func _physics_process(delta):
 	if is_sprinting:
 		velocity.x = velocity.x * 2
 		velocity.z = velocity.z * 2
-	_rotate_camera(delta)
+	
 	move_and_slide()
 	
 	
 func _input(event: InputEvent):
 	if event is InputEventMouseMotion: look_dir = event.relative * 0.01
 	
-func _rotate_camera(delta: float, sens_mod: float = 1.0):
-	#var input = Input.get_vector("look_left","look_right","look_up","look_down")
-	#look_dir += input
-	rotation.y -= look_dir.x * camera_sens * delta
-	#print(rotation.y)
-	#camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod* delta, -90, 90)
-	look_dir = Vector2.ZERO
+	#if event is InputEventJoypadMotion: 
+		#look_dir = Vector2(event.get_axis_value(), 0)
+	 #
+	
+#func _rotate_camera(delta: float, sens_mod: float = 1.0):
+#
+	#rotation.y -= look_dir.x * camera_sens * delta
+	#
+	#look_dir = Vector2.ZERO
 	
 func _process(delta):
 	if Input.is_action_just_pressed(sprint):
@@ -74,4 +77,6 @@ func _process(delta):
 	if Input.is_action_just_released(sprint):
 		is_sprinting = false
 		
+	#_rotate_camera(delta)
+	rotation.y -= Input.get_axis(rotate_left, rotate_right) * 0.5
 

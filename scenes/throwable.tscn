@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bof1mfo7gmp4b"]
+[gd_scene load_steps=6 format=3 uid="uid://dtgnd1vchpslb"]
 
 [ext_resource type="Script" path="res://code/throwable.gd" id="1_y4y6w"]
 
@@ -13,9 +13,8 @@ bounce = 0.6
 
 [node name="Throwable" type="RigidBody3D"]
 collision_layer = 64
-collision_mask = 192
+collision_mask = 195
 physics_material_override = SubResource("PhysicsMaterial_ea77p")
-angular_damp = 0.5
 script = ExtResource("1_y4y6w")
 
 [node name="Hitbox" type="Area3D" parent="."]
