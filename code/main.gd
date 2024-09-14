@@ -15,12 +15,11 @@ func _ready():
 		var x = rng.randf_range(-30, 30)
 		var z_range = pow(900.0 - x**2, 0.5)
 		var z = rng.randf_range(-z_range, z_range)
-		print(x)
-		print(z)
 		var chain_ball = chain_ball_obj_scn.instantiate()
-		chain_ball.freeze = true
-		chain_ball.global_position = Vector3(x, 1, z)
 		get_tree().root.add_child.call_deferred(chain_ball)
+		chain_ball.contact_monitor = true
+		chain_ball.max_contacts_reported = 1
+		chain_ball.position = Vector3(x, 1, z)
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

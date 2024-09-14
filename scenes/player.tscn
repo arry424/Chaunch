@@ -1,22 +1,23 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdt2hutstrwhb"]
 
 [ext_resource type="Script" path="res://code/player.gd" id="1_crpbl"]
-[ext_resource type="PackedScene" uid="uid://dh3c8ksu4np6l" path="res://scenes/chain_object.tscn" id="3_dynhj"]
+[ext_resource type="PackedScene" uid="uid://dh3c8ksu4np6l" path="res://scenes/chain.tscn" id="2_s6sna"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w3mry"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kaoky"]
 
 [node name="Player" type="CharacterBody3D"]
+collision_mask = 128
 script = ExtResource("1_crpbl")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -4.68079e-16, 3.27753e-16, 3.27752e-16, 0.939693, 0.34202, -4.68079e-16, -0.34202, 0.939693, 2.08165e-12, 5, 5)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 3)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_w3mry")
 
-[node name="ChainObject" parent="." instance=ExtResource("3_dynhj")]
+[node name="ChainObject" parent="." instance=ExtResource("2_s6sna")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [node name="CollisionShape3D" parent="ChainObject" index="0"]
