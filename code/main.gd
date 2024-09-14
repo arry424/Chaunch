@@ -25,8 +25,17 @@ func _ready():
 			throwable = bush_scn.instantiate()
 		else:
 			throwable = rock_scn.instantiate()
-		get_tree().root.add_child.call_deferred(throwable)
+		self.add_child.call_deferred(throwable)
+		
 
 		throwable.contact_monitor = true
 		throwable.max_contacts_reported = 1
 		throwable.position = Vector3(x, 1, z)
+		
+func _input(event):
+	if event.is_action_pressed("restart"):
+		#get_tree().clear()
+		get_tree().reload_current_scene()
+		
+		
+	

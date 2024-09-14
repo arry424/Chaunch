@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cetdseybkxcrv"]
+[gd_scene load_steps=3 format=3 uid="uid://bxr3nedsniuk7"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_8l4py"]
 [ext_resource type="Texture2D" uid="uid://benlvj77o0xp8" path="res://assets/icon.svg" id="2_th527"]
@@ -31,20 +31,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -283.0
-offset_top = -249.0
-offset_right = -180.0
-offset_bottom = -148.0
+offset_left = -203.0
+offset_top = -203.0
+offset_right = -100.0
+offset_bottom = -102.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(5, 5)
+scale = Vector2(4, 4)
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Play
 "
 
-[node name="Instructions" type="Button" parent="VBoxContainer"]
+[node name="HowToPlay" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "How To Play"
 

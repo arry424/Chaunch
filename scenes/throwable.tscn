@@ -15,6 +15,7 @@ bounce = 0.6
 collision_layer = 64
 collision_mask = 195
 physics_material_override = SubResource("PhysicsMaterial_ea77p")
+constant_force = Vector3(0, -9.8, 0)
 script = ExtResource("1_y4y6w")
 
 [node name="Hitbox" type="Area3D" parent="."]
