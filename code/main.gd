@@ -10,6 +10,7 @@ var tree_scn = preload("res://scenes/tree.tscn")
 var rock_scn = preload("res://scenes/rock.tscn")
 var bush_scn = preload("res://scenes/bush.tscn")
 
+@onready var win = $Win
 # todo: create the other objects(tree, rock, bush) and preload them
 
 # Called when the node enters the scene tree for the first time.
@@ -37,5 +38,17 @@ func _input(event):
 		#get_tree().clear()
 		get_tree().reload_current_scene()
 		
-		
-	
+func _process(delta):
+	print("player 1 " + str(Score.score_1))
+	print("player 2 " + str(Score.score_2))
+	if Score.score_1 == 3 || Score.score_2 == 3:
+		var winner = "1" if Score.score_1 == 3 else "2"
+		win.text = "Player " + winner + " Won"
+		win.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+		win.visible = true
+		get_tree().paused = true
+
+
+func _on_back_button_down():
+	get_tree().paused = false 	
+	get_tree().change_scene_to_file("res://main_menu.tscn")

@@ -20,7 +20,8 @@ func _process(delta):
 	if Input.is_action_pressed(pick_up) and canPickUp and is_colliding:
 		last_collided_object.reparent(self)
 		last_collided_object.freeze = true
-		last_collided_object.position = Vector3(0, 0, 0)
+		last_collided_object.position = Vector3(0.2, 0, 0)
+		last_collided_object.rotation = Vector3(-45, 0, 0)
 		last_collided_object.set_collision_layer_value(7, false)
 		last_held_object = last_collided_object
 		canPickUp = false

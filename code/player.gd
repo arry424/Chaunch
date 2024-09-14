@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
-@export var max_hp = 50
+@export var max_hp = 1
 var hp = max_hp
-var is_player_one = true
+@export var is_player_one = true
 
 @export var move_left = "move_left"
 @export var move_right = "move_right"
@@ -80,3 +80,14 @@ func _process(delta):
 	#_rotate_camera(delta)
 	rotation.y -= Input.get_axis(rotate_left, rotate_right) * 0.1
 
+	#if is_player_one:
+		#print("player 1 hp is " + str(hp))
+	#else:
+		#print("player 2 hp is " + str(hp))
+	if hp <= 0:
+		if is_player_one:
+			Score.score_2 += 1
+		else:
+			Score.score_1 += 1
+		if Score.score_1 < 3 && Score.score_2 < 3:
+			get_tree().reload_current_scene()
