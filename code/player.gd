@@ -6,7 +6,10 @@ const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var camera = $Camera3D
 
+var look_dir: Vector2
+var camera_sens = 50
 
 var is_sprinting = false
 
@@ -35,7 +38,20 @@ func _physics_process(delta):
 	if is_sprinting:
 		velocity.x = velocity.x * 2
 		velocity.z = velocity.z * 2
+	_rotate_camera(delta)
 	move_and_slide()
+	
+	
+func _input(event: InputEvent):
+	if event is InputEventMouseMotion: look_dir = event.relative * 0.01
+	
+func _rotate_camera(delta: float, sens_mod: float = 1.0):
+	var input = Input.get_vector("look_left","look_right","look_up","look_down")
+	look_dir += input
+	rotation.y -= look_dir.x * camera_sens * delta
+	print(rotation.y)
+	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod* delta, -90, 90)
+	look_dir = Vector2.ZERO
 	
 func _process(delta):
 	if Input.is_action_just_pressed("sprint"):
