@@ -20,8 +20,8 @@ func _process(delta):
 	if Input.is_action_pressed(pick_up) and canPickUp and is_colliding:
 		last_collided_object.reparent(self)
 		last_collided_object.freeze = true
-		last_collided_object.position = Vector3(0.2, 0, 0)
-		last_collided_object.rotation = Vector3(-45, 0, 0)
+		last_collided_object.position = Vector3(0, 3, 0)
+		last_collided_object.rotation = Vector3(-90, 0, 0)
 		last_collided_object.set_collision_layer_value(7, false)
 		last_held_object = last_collided_object
 		canPickUp = false
@@ -41,7 +41,7 @@ func _process(delta):
 		var direction_vector = ray.get_target_position()
 		#direction_vector = direction_vector.normalized()  # Normalize for unit length
 		print(direction_vector)
-		last_held_object.set_axis_velocity(Vector3(direction_vector.x * 3, 2, direction_vector.z * 3))
+		last_held_object.set_axis_velocity(Vector3(direction_vector.x * 3, 0, direction_vector.z * 3))
 		canPickUp = true
 
 

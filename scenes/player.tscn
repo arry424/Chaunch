@@ -18,7 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 0.924699, 0.380699, 0, -0.380699, 0.924699, 
 shape = SubResource("CapsuleShape3D_w3mry")
 
 [node name="Chain" parent="." instance=ExtResource("2_s6sna")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -1, 2.08165e-12)
 
 [node name="CollisionShape3D" parent="Chain" index="0"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

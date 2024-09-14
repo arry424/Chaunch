@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dh3c8ksu4np6l"]
+[gd_scene load_steps=5 format=3 uid="uid://dh3c8ksu4np6l"]
 
 [ext_resource type="Script" path="res://code/chain.gd" id="1_br1sp"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_aehym"]
-radius = 0.75
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vyu48"]
+height = 0.25
+radius = 1.0
 
-[sub_resource type="SphereMesh" id="SphereMesh_kqx5t"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_42qln"]
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.25
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_mkych"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_e46r1"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g7hmx"]
+height = 0.25
+radius = 2.0
 
 [node name="Chain" type="RigidBody3D"]
 collision_layer = 4
@@ -17,26 +21,22 @@ collision_mask = 128
 script = ExtResource("1_br1sp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_aehym")
+process_mode = 4
+shape = SubResource("CylinderShape3D_vyu48")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.435, 0, 0, 0, 1.435, 0, 0, 0, 1.435, 0, 0, 0)
-mesh = SubResource("SphereMesh_kqx5t")
+mesh = SubResource("CylinderMesh_42qln")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 4
 collision_mask = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1.655, 0, 0, 0, 1.655, 0, 0, 0, 1.655, 0, 0, 0)
-shape = SubResource("SphereShape3D_mkych")
+shape = SubResource("CylinderShape3D_g7hmx")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -0.00178552, 0, -0.47928)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.715, 0, 0, 0, 0.715, 0, 0, 0, 0.715, 0, 0, -0.668758)
-mesh = SubResource("BoxMesh_e46r1")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
