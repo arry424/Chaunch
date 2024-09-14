@@ -4,6 +4,7 @@ var canPickUp = true
 var last_held_object: RigidBody3D
 var last_collided_object: RigidBody3D
 var is_colliding = false
+@onready var ray = $RayCast3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#contact_monitor = true
@@ -22,7 +23,9 @@ func _process(delta):
 	if Input.is_action_pressed("throw") && !canPickUp:
 		last_held_object.reparent(get_tree().root)
 		last_held_object.freeze = false
-		last_held_object.set_axis_velocity(Vector3(0,10,-6))
+		var direction_vector = self.transform.origin
+		direction_vector = direction_vector.normalized()  # Normalize for unit length
+		last_held_object.set_axis_velocity(direction_vector)
 		canPickUp = true
 
 

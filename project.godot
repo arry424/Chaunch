@@ -78,6 +78,10 @@ look_down={
 "deadzone": 0.5,
 "events": []
 }
+test={
+"deadzone": 0.5,
+"events": []
+}
 
 [layer_names]
 
