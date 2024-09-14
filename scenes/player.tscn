@@ -8,7 +8,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kaoky"]
 
 [node name="Player" type="CharacterBody3D"]
-collision_mask = 128
+collision_mask = 195
 script = ExtResource("1_crpbl")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -17,19 +17,19 @@ transform = Transform3D(1, 0, 0, 0, 0.924699, 0.380699, 0, -0.380699, 0.924699, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_w3mry")
 
-[node name="ChainObject" parent="." instance=ExtResource("2_s6sna")]
+[node name="Chain" parent="." instance=ExtResource("2_s6sna")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="CollisionShape3D" parent="ChainObject" index="0"]
+[node name="CollisionShape3D" parent="Chain" index="0"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="MeshInstance3D" parent="ChainObject" index="1"]
+[node name="MeshInstance3D" parent="Chain" index="1"]
 transform = Transform3D(0.73, 0, 0, 0, 0.73, 0, 0, 0, 0.73, 0, 0, 0)
 
-[node name="RayCast3D" parent="ChainObject" index="3"]
+[node name="RayCast3D" parent="Chain" index="3"]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -0.00178552, 0, 0.258471)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_kaoky")
 
-[editable path="ChainObject"]
+[editable path="Chain"]

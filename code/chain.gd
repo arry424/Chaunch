@@ -17,6 +17,7 @@ func _process(delta):
 	if Input.is_action_pressed("pick_up") and canPickUp and is_colliding:
 		last_collided_object.reparent(self)
 		last_collided_object.freeze = true
+		last_collided_object.position = Vector3(0, 0, 0)
 		canPickUp = false
 		last_held_object = last_collided_object
 		is_colliding = false
@@ -24,6 +25,8 @@ func _process(delta):
 	if Input.is_action_pressed("throw") && !canPickUp:
 		last_held_object.reparent(get_tree().root)
 		last_held_object.freeze = false
+		last_held_object.get_child(0).set_collision_mask_value(1, true)
+		last_held_object.get_child(0).set_collision_mask_value(2, true)
 		var distance = 10
 		var local_direction = Vector3(0, 0, -1)  # Local direction, forward
 		var world_direction = global_transform.basis * local_direction 

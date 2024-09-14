@@ -87,10 +87,10 @@ test={
 
 3d_physics/layer_1="Player1"
 3d_physics/layer_2="Player2"
-3d_physics/layer_3="Chain1"
-3d_physics/layer_4="Chain2"
-3d_physics/layer_5="Player1Hurtbox"
-3d_physics/layer_6="Player2Hurtbox"
+3d_physics/layer_3="unused"
+3d_physics/layer_4="unused"
+3d_physics/layer_5="unused"
+3d_physics/layer_6="unused"
 3d_physics/layer_7="Throwables"
 3d_physics/layer_8="Environment"
 
