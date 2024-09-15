@@ -80,7 +80,8 @@ func _process(_delta):
 		
 	
 		if Score.score_1 == 3 || Score.score_2 == 3:
-			score_label.text = str(Score.score_1) + "-" + str(Score.score_2)
+			score_label.visible = false
+			$ColorRect.visible = false
 			var winner = "1" if Score.score_1 == 3 else "2"
 			win.text = "Player " + winner + " Wins"
 			win.process_mode = Node.PROCESS_MODE_WHEN_PAUSED

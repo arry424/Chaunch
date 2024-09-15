@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://o06ywtm5i71g"]
+[gd_scene load_steps=10 format=3 uid="uid://c8vgypldjsf7i"]
 
 [ext_resource type="Texture2D" uid="uid://cclpgoi40qr4i" path="res://assets/LNO_assets_textures/textures/water-texure.png" id="1_2fu1g"]
 [ext_resource type="PackedScene" uid="uid://c67rygq1e1tlb" path="res://91524-real with textures/91524-real with textures/91524-realreal.gltf" id="2_jmkfp"]

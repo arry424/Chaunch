@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://da73hxbpx018"]
 
 [ext_resource type="Script" path="res://code/main.gd" id="1_56u4r"]
-[ext_resource type="PackedScene" uid="uid://o06ywtm5i71g" path="res://audio/environment.tscn" id="1_68f4q"]
+[ext_resource type="PackedScene" uid="uid://c8vgypldjsf7i" path="res://audio/environment.tscn" id="1_68f4q"]
 [ext_resource type="AudioStream" uid="uid://bbn5y5mm37ftm" path="res://ChainVictory.wav" id="4_7rogd"]
 [ext_resource type="AudioStream" uid="uid://d2mlepgvq2aal" path="res://audio/ChainsCombatLoopv2 (2).wav" id="4_fdru6"]
 

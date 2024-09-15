@@ -111,7 +111,7 @@ func _process(_delta):
 		pick_up_se.play()
 		last_collided_object.position = Vector3(0, 0, -1.5)
 		last_collided_object.rotation = Vector3(0, 0, -140)
-		last_collided_object.set_collision_layer_value(7, false)
+		#last_collided_object.set_collision_layer_value(7, false)
 		last_held_object = last_collided_object
 		canPickUp = false
 		is_colliding = false
