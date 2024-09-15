@@ -38,21 +38,22 @@ func _input(event):
 func _process(_delta):
 	#print("player 1 " + str(Score.score_1))
 	#print("player 2 " + str(Score.score_2))
-	if player_1.hp <= 0:
-		Score.score_2 += 1
-		get_tree().change_scene_to_file("res://scenes/main.tscn")
-	elif player_2.hp <= 0:
-		Score.score_1 += 1
-		get_tree().change_scene_to_file("res://scenes/main.tscn")
-
-				
 	score_label.text = str(Score.score_1) + "-" + str(Score.score_2)
-	if Score.score_1 == 3 || Score.score_2 == 3:
-		var winner = "1" if Score.score_1 == 3 else "2"
-		win.text = "Player " + winner + " Wins"
-		win.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-		win.visible = true
-		get_tree().paused = true
+	if player_1.hp <= 0 or player_2.hp <= 0:
+		if player_1.hp <= 0:
+			Score.score_2 += 1
+		else:
+			Score.score_1 += 1
+			
+		if Score.score_1 == 3 || Score.score_2 == 3:
+			var winner = "1" if Score.score_1 == 3 else "2"
+			win.text = "Player " + winner + " Wins"
+			win.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+			win.visible = true
+			get_tree().paused = true
+		else:
+			get_tree().reload_current_scene()
+	
 
 
 func _on_back_button_down():
