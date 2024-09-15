@@ -29,11 +29,11 @@ func get_random_position(radius: float) -> Vector3:
 func _ready():	
 	$AudioStreamPlayer.play(Music.musicProgress)   
 	var throwable = rock_scn.instantiate()
-	for i in range(10):
-		var pos = get_random_position(23)
-		if i < 2:
+	for i in range(20):
+		var pos = get_random_position(30)
+		if i < 4:
 			throwable = tree_scn.instantiate()
-		elif i < 5:
+		elif i < 10:
 			throwable = bush_scn.instantiate()
 		else:
 			throwable = rock_scn.instantiate()
@@ -48,10 +48,10 @@ func _ready():
 	for key in player_2.actions:
 		player_2.actions[key] = player_2.actions[key] + "_2"
 	
-	var pos_1 = get_random_position(23)
+	var pos_1 = get_random_position(30)
 	viewport_1.add_child.call_deferred(player_1)
 	player_1.position = Vector3(pos_1.x, 6, pos_1.z)
-	var pos_2 = get_random_position(23)
+	var pos_2 = get_random_position(30)
 	viewport_2.add_child.call_deferred(player_2)
 	player_2.position = Vector3(pos_2.x, 6, pos_2.z)
 	

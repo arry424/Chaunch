@@ -33,7 +33,7 @@ var is_winding_up = false
 @onready var pick_up_se = $pick_up_se
 
 
-const SPEED = 5.0
+const SPEED = 8.0
 const JUMP_VELOCITY = 4.5
 const BASE_WINDUP_TIME = 0.3
 const RECOVERY_TIME = 0.4
