@@ -5,22 +5,29 @@ var rng = RandomNumberGenerator.new()
 var tree_scn = preload("res://scenes/tree.tscn")
 var rock_scn = preload("res://scenes/rock.tscn")
 var bush_scn = preload("res://scenes/bush.tscn")
-
+var player_scn = preload("res://scenes/player.tscn")
 @onready var win = $Win
 @onready var score_label = $ScoreLabel
-@onready var player_1 = $GridContainer/SubViewportContainer/SubViewport/Player
-@onready var player_2 = $GridContainer/SubViewportContainer2/SubViewport/Player2
 @onready var sound_timeout = $SoundTimeout
+@onready var viewport_1 = $GridContainer/SubViewportContainer/SubViewport
+@onready var viewport_2 = $GridContainer/SubViewportContainer2/SubViewport
+var player_1: CharacterBody3D
+var player_2: CharacterBody3D
+
 # todo: create the other objects(tree, rock, bush) and preload them
 
 # Called when the node enters the scene tree for the first time.
+func get_random_position(radius: float) -> Vector3:
+	var x = rng.randf_range(-radius, radius)
+	var z_range = pow(radius**2 - x**2, 0.5)
+	var z = rng.randf_range(-z_range, z_range)
+	return Vector3(x, 0, z)
+
 func _ready():	
 	$AudioStreamPlayer.play(Music.musicProgress)   
 	var throwable = rock_scn.instantiate()
 	for i in range(10):
-		var x = rng.randf_range(-23, 23)
-		var z_range = pow(23**2 - x**2, 0.5)
-		var z = rng.randf_range(-z_range, z_range)
+		var pos = get_random_position(23)
 		if i < 2:
 			throwable = tree_scn.instantiate()
 		elif i < 5:
@@ -28,10 +35,24 @@ func _ready():
 		else:
 			throwable = rock_scn.instantiate()
 		self.add_child.call_deferred(throwable)
-		
 		#throwable.contact_monitor = true
 		#throwable.max_contacts_reported = 1
-		throwable.position = Vector3(x, 1, z)
+		throwable.position = Vector3(pos.x, 6, pos.z)
+	
+	player_1 = player_scn.instantiate()
+	player_2 = player_scn.instantiate()
+	player_2.is_player_one = false
+	for key in player_2.actions:
+		player_2.actions[key] = player_2.actions[key] + "_2"
+	
+	var pos_1 = get_random_position(23)
+	viewport_1.add_child.call_deferred(player_1)
+	player_1.position = Vector3(pos_1.x, 6, pos_1.z)
+	var pos_2 = get_random_position(23)
+	viewport_2.add_child.call_deferred(player_2)
+	player_2.position = Vector3(pos_2.x, 6, pos_2.z)
+	
+	
 		
 func _input(event):
 	if event.is_action_pressed("restart"):
