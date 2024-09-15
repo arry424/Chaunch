@@ -4,6 +4,7 @@ extends Control
 func _ready():
 	Score.score_1 = 0
 	Score.score_2 = 0
+	$VBoxContainer/PlayButton.grab_focus()
 
 func _on_play_button_button_down():
 	get_tree().change_scene_to_file("res://scenes/main.tscn")

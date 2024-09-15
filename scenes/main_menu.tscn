@@ -35,15 +35,19 @@ scale = Vector2(2.34516, 1.99469)
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_next = NodePath("../HowToPlay")
 text = "Play
 "
 
 [node name="HowToPlay" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath(".")
 text = "How To Play"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_previous = NodePath("../HowToPlay")
 text = "Quit
 "
 

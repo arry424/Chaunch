@@ -57,9 +57,6 @@ throw = "throw_2"
 [node name="Camera3D" parent="GridContainer/SubViewportContainer2/SubViewport/Player2" index="0"]
 current = true
 
-[node name="MeshInstance3D" parent="GridContainer/SubViewportContainer2/SubViewport/Player2" index="2"]
-transform = Transform3D(-1.47475, 0, -0.0274376, 0, 1.475, 0, 0.0274376, 0, -1.47475, 0.0139309, 0, 0.0761382)
-
 [node name="Ground" parent="." instance=ExtResource("1_68f4q")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

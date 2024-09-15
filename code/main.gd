@@ -51,6 +51,7 @@ func _process(_delta):
 			win.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 			win.visible = true
 			get_tree().paused = true
+			win.get_child(0).grab_focus()
 		else:
 			get_tree().reload_current_scene()
 	
