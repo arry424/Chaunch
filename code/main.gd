@@ -11,6 +11,8 @@ var player_scn = preload("res://scenes/player.tscn")
 @onready var sound_timeout = $SoundTimeout
 @onready var viewport_1 = $GridContainer/SubViewportContainer/SubViewport
 @onready var viewport_2 = $GridContainer/SubViewportContainer2/SubViewport
+@onready var p1_hp = $Player1HP
+@onready var p2_hp = $Player2HP
 var player_1: CharacterBody3D
 var player_2: CharacterBody3D
 @onready var victoryMusic = $victory_music
@@ -61,6 +63,9 @@ func _input(event):
 		
 func _process(_delta):
 	score_label.text = str(Score.score_1) + "-" + str(Score.score_2)
+	p1_hp.text = "HP: " + str(player_1.hp)
+	p2_hp.text = "HP: " + str(player_2.hp)
+	
 	if player_1.hp <= 0 or player_2.hp <= 0:
 		if sound_timeout.is_stopped():
 			sound_timeout.start()

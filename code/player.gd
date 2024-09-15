@@ -109,8 +109,8 @@ func _process(_delta):
 		last_collided_object.reparent($MeshInstance3D)
 		last_collided_object.freeze = true
 		pick_up_se.play()
-		last_collided_object.position = Vector3(0, 0, -2)
-		last_collided_object.rotation = Vector3(0, 0, -90)
+		last_collided_object.position = Vector3(0, 0, -1.5)
+		last_collided_object.rotation = Vector3(0, 0, -140)
 		last_collided_object.set_collision_layer_value(7, false)
 		last_held_object = last_collided_object
 		canPickUp = false
@@ -127,8 +127,9 @@ func _process(_delta):
 			multiplier = 3
 		elif last_held_object.type == "rock":
 			multiplier = 2
-		await get_tree().create_timer(BASE_WINDUP_TIME * multiplier + 0.025).timeout
+		await get_tree().create_timer(BASE_WINDUP_TIME * multiplier + 0.015).timeout
 		
+		last_collided_object.position = Vector3(0, 0, -4)
 		last_held_object.reparent(get_node("/root/Main"))
 		last_held_object.freeze = false
 		last_held_object.get_child(0).set_collision_mask_value(1, true)

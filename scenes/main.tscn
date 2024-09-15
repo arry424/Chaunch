@@ -24,7 +24,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(574, 648)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer"]
@@ -35,7 +35,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer2"]
 handle_input_locally = false
-size = Vector2i(574, 648)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="Ground" parent="." instance=ExtResource("1_68f4q")]
@@ -65,14 +65,39 @@ text = "Back"
 
 [node name="ScoreLabel" type="RichTextLabel" parent="."]
 z_index = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -196.0
-offset_right = 30.0
-offset_bottom = 113.0
-grow_horizontal = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_right = 196.0
+offset_bottom = 173.0
+grow_horizontal = 2
 theme_override_font_sizes/normal_font_size = 100
+
+[node name="Player1HP" type="RichTextLabel" parent="."]
+z_index = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 170.0
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 50
+text = "HP: "
+
+[node name="Player2HP" type="RichTextLabel" parent="."]
+z_index = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -85.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 50
+text = "HP: "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_fdru6")
