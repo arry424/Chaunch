@@ -10,6 +10,7 @@ var bush_scn = preload("res://scenes/bush.tscn")
 @onready var score_label = $ScoreLabel
 @onready var player_1 = $GridContainer/SubViewportContainer/SubViewport/Player
 @onready var player_2 = $GridContainer/SubViewportContainer2/SubViewport/Player2
+@onready var sound_timeout = $SoundTimeout
 # todo: create the other objects(tree, rock, bush) and preload them
 
 # Called when the node enters the scene tree for the first time.
@@ -37,18 +38,22 @@ func _input(event):
 		get_tree().reload_current_scene()
 		
 func _process(_delta):
-	#print("player 1 " + str(Score.score_1))
-	#print("player 2 " + str(Score.score_2))
 	score_label.text = str(Score.score_1) + "-" + str(Score.score_2)
 	if player_1.hp <= 0 or player_2.hp <= 0:
-		await get_tree().create_timer(.65).timeout
+		if sound_timeout.is_stopped():
+			sound_timeout.start()
+			await sound_timeout.timeout
+			print("hello")
+		else:
+			return
 		if player_1.hp <= 0:
 			Score.score_2 += 1
 		else:
 			Score.score_1 += 1
 		
+	
 		if Score.score_1 == 3 || Score.score_2 == 3:
-			
+			score_label.text = str(Score.score_1) + "-" + str(Score.score_2)
 			var winner = "1" if Score.score_1 == 3 else "2"
 			win.text = "Player " + winner + " Wins"
 			win.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
