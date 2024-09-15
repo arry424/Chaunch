@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxr3nedsniuk7"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_8l4py"]
-[ext_resource type="Texture2D" uid="uid://benlvj77o0xp8" path="res://assets/icon.svg" id="2_th527"]
+[ext_resource type="Texture2D" uid="uid://dnlfieapthqw7" path="res://assets/INCHAINITYlogo.png" id="2_dx6i5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,30 +14,24 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_8l4py")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 31.0
+offset_top = -310.0
+offset_right = 1631.0
+offset_bottom = 1290.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_th527")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_dx6i5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -203.0
-offset_top = -203.0
-offset_right = -100.0
-offset_bottom = -102.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(4, 4)
+layout_mode = 0
+offset_left = 439.0
+offset_top = 369.0
+offset_right = 542.0
+offset_bottom = 470.0
+scale = Vector2(2.34516, 1.99469)
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

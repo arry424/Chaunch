@@ -22,6 +22,7 @@ Score="*res://Score.gd"
 [display]
 
 window/size/mode=2
+window/stretch/mode="viewport"
 
 [input]
 
@@ -171,3 +172,4 @@ restart={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
