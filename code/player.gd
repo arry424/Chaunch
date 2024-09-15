@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var max_hp = 1
+@export var max_hp = 15
 var hp = max_hp
 @export var is_player_one = true
 
@@ -23,6 +23,8 @@ var is_winding_up = false
 @onready var tight = $"MeshInstance3D/Chain3(straight-tight)"
 @onready var loose = $"MeshInstance3D/Chain4(snake-shaped)"
 @onready var ray = $RayCast3D
+@onready var walkingSound = $walking
+@onready var pick_up_se = $pick_up_se
 
 @export var pick_up = "pick_up"
 @export var throw = "throw"
@@ -73,7 +75,12 @@ func _physics_process(delta):
 	if is_sprinting:
 		velocity.x = velocity.x * 2
 		velocity.z = velocity.z * 2
-	
+	if (velocity.x != 0 or velocity.z != 0) and is_on_floor():
+		if !walkingSound.playing:
+			walkingSound.play()
+	if velocity.x == 0 and velocity.z == 0 and walkingSound.playing:
+		walkingSound.stop()
+		
 	move_and_slide()
 	
 	
@@ -98,6 +105,7 @@ func _process(_delta):
 		tight.set_visible(true)
 		last_collided_object.reparent($MeshInstance3D)
 		last_collided_object.freeze = true
+		pick_up_se.play()
 		last_collided_object.position = Vector3(0, 0, -2)
 		last_collided_object.rotation = Vector3(0, 0, -90)
 		last_collided_object.set_collision_layer_value(7, false)
@@ -114,9 +122,9 @@ func _process(_delta):
 		var multiplier = 1
 		if last_held_object.type == "tree":
 			multiplier = 3
-		elif last_held_object.type == "bush":
+		elif last_held_object.type == "rock":
 			multiplier = 2
-		await get_tree().create_timer(BASE_WINDUP_TIME * multiplier + 0.01).timeout
+		await get_tree().create_timer(BASE_WINDUP_TIME * multiplier + 0.025).timeout
 		
 		last_held_object.reparent(get_node("/root/Main"))
 		last_held_object.freeze = false
