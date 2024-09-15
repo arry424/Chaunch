@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var max_hp = 30
+@export var max_hp = 1
 var hp = max_hp
 @export var is_player_one = true
 
@@ -118,7 +118,7 @@ func _process(_delta):
 			multiplier = 2
 		await get_tree().create_timer(BASE_WINDUP_TIME * multiplier).timeout
 		
-		last_held_object.reparent(get_tree().root)
+		last_held_object.reparent(get_node("/root/Main"))
 		last_held_object.freeze = false
 		last_held_object.get_child(0).set_collision_mask_value(1, true)
 		#last_held_object.get_child(0).set_collision_mask_value(2, true)
@@ -126,11 +126,9 @@ func _process(_delta):
 		
 		var distance = 10
 		var local_direction = Vector3(0, 0, -1)  # Local direction, forward
-		var world_direction = global_transform.basis * local_direction 
-		var direction_vector = ray.get_target_position()
-		#direction_vector = direction_vector.normalized()  # Normalize for unit length
+		var direction_vector = global_transform.basis * local_direction 
 		print(direction_vector)
-		last_held_object.set_axis_velocity(Vector3(direction_vector.x * 3, 0, direction_vector.z * 3))
+		last_held_object.set_axis_velocity(Vector3(direction_vector.x * 30, 0, direction_vector.z * 30))
 		canPickUp = true
 		is_winding_up = false
 		
