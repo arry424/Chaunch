@@ -17,6 +17,7 @@ var canPickUp = true
 var last_held_object: RigidBody3D
 var last_collided_object: RigidBody3D
 var is_colliding = false
+var is_winding_up = false
 
 @onready var animation = $AnimationPlayer
 @onready var tight = $"MeshInstance3D/Chain3(straight-tight)"
@@ -29,7 +30,8 @@ var is_colliding = false
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-
+const BASE_WINDUP_TIME = 0.3
+const RECOVERY_TIME =0.4
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -50,7 +52,9 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
+	
+	if is_winding_up:
+		return
 	# Handle jump.
 	if Input.is_action_just_pressed(jump) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -92,6 +96,11 @@ func _process(_delta):
 			Score.score_1 += 1
 		if Score.score_1 < 3 && Score.score_2 < 3:
 			get_tree().reload_current_scene()
+			
+	
+	if is_winding_up:
+		return
+		
 	if Input.is_action_just_pressed(pick_up) and canPickUp and is_colliding:
 		loose.set_visible(false)
 		tight.set_visible(true)
@@ -113,9 +122,15 @@ func _process(_delta):
 		#direction_vector = direction_vector.normalized()  # Normalize for unit length
 		print(direction_vector)
 		
+		is_winding_up = true
 		animation.play("spin_attack")
 		
-		await get_tree().create_timer(.34).timeout
+		var multiplier = 1
+		if last_held_object.type == "tree":
+			multiplier = 5
+		elif last_held_object.type == "bush":
+			multiplier = 3
+		await get_tree().create_timer(BASE_WINDUP_TIME * multiplier).timeout
 		
 		last_held_object.reparent(get_tree().root)
 		last_held_object.freeze = false
@@ -124,12 +139,13 @@ func _process(_delta):
 		last_held_object.set_collision_layer_value(7, true)
 		last_held_object.set_axis_velocity(Vector3(direction_vector.x * 3, 0, direction_vector.z * 3))
 		canPickUp = true
+		is_winding_up = false
 		
 		animation.play("recover")
 		loose.set_visible(true)
 		tight.set_visible(false)
 		
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(RECOVERY_TIME).timeout
 func _on_area_3d_body_entered(body):
 	is_colliding = true
 	last_collided_object = body

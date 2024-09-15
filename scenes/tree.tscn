@@ -16,6 +16,7 @@ collision_mask = 195
 mass = 10.0
 gravity_scale = 1.5
 script = ExtResource("1_40rv1")
+type = "tree"
 
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 64
