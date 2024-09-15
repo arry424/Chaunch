@@ -31,7 +31,7 @@ var is_winding_up = false
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const BASE_WINDUP_TIME = 0.3
-const RECOVERY_TIME =0.4
+const RECOVERY_TIME = 0.4
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -89,14 +89,6 @@ func _process(_delta):
 		#print("player 1 hp is " + str(hp))
 	#else:
 		#print("player 2 hp is " + str(hp))
-	if hp <= 0:
-		if is_player_one:
-			Score.score_2 += 1
-		else:
-			Score.score_1 += 1
-		if Score.score_1 < 3 && Score.score_2 < 3:
-			get_tree().reload_current_scene()
-			
 	
 	if is_winding_up:
 		return
@@ -114,22 +106,16 @@ func _process(_delta):
 		is_colliding = false
 	
 	if Input.is_action_just_pressed(throw) && !canPickUp:
-		var distance = 10
-		var local_direction = Vector3(0, 0, -1)  # Local direction, forward
-		var world_direction = global_transform.basis * local_direction 
-		ray.target_position = world_direction * distance
-		var direction_vector = ray.get_target_position()
-		#direction_vector = direction_vector.normalized()  # Normalize for unit length
-		print(direction_vector)
+		
 		
 		is_winding_up = true
 		animation.play("spin_attack")
 		
 		var multiplier = 1
 		if last_held_object.type == "tree":
-			multiplier = 5
-		elif last_held_object.type == "bush":
 			multiplier = 3
+		elif last_held_object.type == "bush":
+			multiplier = 2
 		await get_tree().create_timer(BASE_WINDUP_TIME * multiplier).timeout
 		
 		last_held_object.reparent(get_tree().root)
@@ -137,6 +123,13 @@ func _process(_delta):
 		last_held_object.get_child(0).set_collision_mask_value(1, true)
 		#last_held_object.get_child(0).set_collision_mask_value(2, true)
 		last_held_object.set_collision_layer_value(7, true)
+		
+		var distance = 10
+		var local_direction = Vector3(0, 0, -1)  # Local direction, forward
+		var world_direction = global_transform.basis * local_direction 
+		var direction_vector = ray.get_target_position()
+		#direction_vector = direction_vector.normalized()  # Normalize for unit length
+		print(direction_vector)
 		last_held_object.set_axis_velocity(Vector3(direction_vector.x * 3, 0, direction_vector.z * 3))
 		canPickUp = true
 		is_winding_up = false

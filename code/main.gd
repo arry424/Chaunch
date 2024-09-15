@@ -8,6 +8,8 @@ var bush_scn = preload("res://scenes/bush.tscn")
 
 @onready var win = $Win
 @onready var score_label = $ScoreLabel
+@onready var player_1 = $GridContainer/SubViewportContainer/SubViewport/Player
+@onready var player_2 = $GridContainer/SubViewportContainer2/SubViewport/Player2
 # todo: create the other objects(tree, rock, bush) and preload them
 
 # Called when the node enters the scene tree for the first time.
@@ -36,7 +38,14 @@ func _input(event):
 func _process(_delta):
 	#print("player 1 " + str(Score.score_1))
 	#print("player 2 " + str(Score.score_2))
-	
+	if player_1.hp <= 0:
+		Score.score_2 += 1
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
+	elif player_2.hp <= 0:
+		Score.score_1 += 1
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+				
 	score_label.text = str(Score.score_1) + "-" + str(Score.score_2)
 	if Score.score_1 == 3 || Score.score_2 == 3:
 		var winner = "1" if Score.score_1 == 3 else "2"
