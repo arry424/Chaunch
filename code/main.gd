@@ -13,6 +13,7 @@ var player_scn = preload("res://scenes/player.tscn")
 @onready var viewport_2 = $GridContainer/SubViewportContainer2/SubViewport
 var player_1: CharacterBody3D
 var player_2: CharacterBody3D
+@onready var victoryMusic = $victory_music
 
 # todo: create the other objects(tree, rock, bush) and preload them
 
@@ -80,6 +81,7 @@ func _process(_delta):
 			win.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 			win.visible = true
 			get_tree().paused = true
+			victoryMusic.play()
 			win.get_child(0).grab_focus()
 		else:
 			Music.musicProgress = $AudioStreamPlayer.get_playback_position()

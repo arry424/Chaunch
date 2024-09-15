@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://da73hxbpx018"]
+[gd_scene load_steps=5 format=3 uid="uid://da73hxbpx018"]
 
 [ext_resource type="Script" path="res://code/main.gd" id="1_56u4r"]
 [ext_resource type="PackedScene" uid="uid://c8vgypldjsf7i" path="res://scenes/environment.tscn" id="1_68f4q"]
+[ext_resource type="AudioStream" uid="uid://bbn5y5mm37ftm" path="res://ChainVictory.wav" id="4_7rogd"]
 [ext_resource type="AudioStream" uid="uid://d2mlepgvq2aal" path="res://audio/ChainsCombatLoopv2 (2).wav" id="4_fdru6"]
 
 [node name="Main" type="Node"]
@@ -79,6 +80,9 @@ stream = ExtResource("4_fdru6")
 [node name="SoundTimeout" type="Timer" parent="."]
 wait_time = 0.65
 one_shot = true
+
+[node name="victory_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7rogd")
 
 [connection signal="button_down" from="Win/Back" to="." method="_on_back_button_down"]
 
