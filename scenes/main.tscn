@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://da73hxbpx018"]
 
 [ext_resource type="Script" path="res://code/main.gd" id="1_56u4r"]
-[ext_resource type="PackedScene" uid="uid://c8vgypldjsf7i" path="res://scenes/environment.tscn" id="1_68f4q"]
+[ext_resource type="PackedScene" uid="uid://c8vgypldjsf7i" path="res://audio/environment.tscn" id="1_68f4q"]
 [ext_resource type="AudioStream" uid="uid://bbn5y5mm37ftm" path="res://ChainVictory.wav" id="4_7rogd"]
 [ext_resource type="AudioStream" uid="uid://d2mlepgvq2aal" path="res://audio/ChainsCombatLoopv2 (2).wav" id="4_fdru6"]
 
@@ -24,7 +24,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(574, 648)
 render_target_update_mode = 4
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer"]
@@ -35,7 +35,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer2"]
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(574, 648)
 render_target_update_mode = 4
 
 [node name="Ground" parent="." instance=ExtResource("1_68f4q")]

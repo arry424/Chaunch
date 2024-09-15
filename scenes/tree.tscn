@@ -1,15 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhon53ftcqmga"]
+[gd_scene load_steps=7 format=3 uid="uid://bhon53ftcqmga"]
 
 [ext_resource type="Script" path="res://code/throwable.gd" id="1_40rv1"]
 [ext_resource type="PackedScene" uid="uid://m6jnbwhlogkt" path="res://scenes/big_tree.tscn" id="2_5f6qt"]
 [ext_resource type="AudioStream" uid="uid://b32vlbkoel5yj" path="res://BigHit.wav" id="3_0pedd"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j2hvr"]
-points = PackedVector3Array(1.22209, 3.55486, 1.11094, 0.555469, -3.55486, -0.333159, 0.777778, 3.55486, -1.4444, -0.333159, -3.55486, 0.555469, -0.777778, 3.55486, 1.4444, -1.11094, 3.55486, -1.22209, -0.333159, -3.55486, -0.555469, 1.55556, 3.33216, -0.444314, 0.555469, -3.55486, 0.333159, 0.444314, 3.33216, 1.55556, -1.55556, 3.33216, 0.444314, -0.444314, 3.33216, -1.55556, -0.555469, -3.55486, -0.333159, 1.55556, 3.33216, 0.444314, -1.55556, 3.33216, -0.444314, 0.333159, -3.55486, -0.555469, 1.22209, 3.55486, -1.11094, 0.333159, -3.55486, 0.555469, -1.22209, 3.55486, 1.11094, -0.555469, -3.55486, 0.333159, -0.444314, 3.33216, 1.55556, 0.444314, 3.33216, -1.55556, -1.4444, 3.55486, -0.777778, 0.777778, 2.66545, 1.33325, 1.4444, 3.55486, -0.777778, -1.33325, 2.66545, 0.777778, 1.33325, 2.66545, 0.777778, -0.777778, 2.66545, -1.33325, -0.999783, 2.88815, 1.22209, -1.22209, 2.88815, -0.999783, 0.999783, 2.88815, -1.22209, 0.777778, 3.55486, 1.4444)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cia1h"]
+height = 6.89952
+radius = 0.471
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_s7ct1"]
-top_radius = 1.5
-height = 7.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_whu40"]
+height = 4.82112
+radius = 0.25
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5wn6y"]
+height = 3.0
+radius = 0.25
 
 [node name="Tree" type="RigidBody3D"]
 collision_layer = 64
@@ -17,29 +22,35 @@ collision_mask = 195
 mass = 10.0
 gravity_scale = 1.5
 script = ExtResource("1_40rv1")
-type = "tree"
 
 [node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1.32, 0, 0, 0, 1.32, 0, 0, 0, 1.32, 0, 2.11604, -0.367348)
 collision_layer = 64
 collision_mask = 0
 angular_damp_space_override = 1
 angular_damp = 59.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-shape = SubResource("ConvexPolygonShape3D_j2hvr")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04662, -0.391387, 0.0132879)
+shape = SubResource("CylinderShape3D_cia1h")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(0.223485, 0.745338, -0.628112, -0.957868, 0.28721, -2.5909e-07, 0.1804, 0.601649, 0.778123, 0.815315, 0.782216, 1.57461)
+shape = SubResource("CylinderShape3D_whu40")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(0.803857, -0.42788, 0.413199, 0, 0.694658, 0.71934, -0.594823, -0.578246, 0.558406, -1.45014, 0.714702, -0.921236)
+shape = SubResource("CylinderShape3D_5wn6y")
 
 [node name="TREE2 BIGGER ONE REAL" parent="." instance=ExtResource("2_5f6qt")]
-transform = Transform3D(47.8508, 2.18451, 14.3367, 18.8644, -5.54117, -36.366, -7.66441e-07, 74.1261, -3.14099, 1.50462, 1.91851, 0.107815)
+transform = Transform3D(47.8508, 2.18451, 14.3367, 18.8644, -5.54117, -36.366, -7.66441e-07, 74.1261, -3.14099, 0.476767, 2.48899, -0.367348)
 
 [node name="soundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_0pedd")
 volume_db = 5.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("CylinderMesh_s7ct1")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_j2hvr")
+transform = Transform3D(1.32, 0, 0, 0, 1.32, 0, 0, 0, 1.32, -1.38153, 1.59941, -0.349808)
+shape = SubResource("CylinderShape3D_cia1h")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
