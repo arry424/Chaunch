@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://da73hxbpx018"]
 
 [ext_resource type="Script" path="res://code/main.gd" id="1_56u4r"]
-[ext_resource type="PackedScene" uid="uid://c8vgypldjsf7i" path="res://audio/environment.tscn" id="1_68f4q"]
+[ext_resource type="PackedScene" uid="uid://o06ywtm5i71g" path="res://audio/environment.tscn" id="1_68f4q"]
 [ext_resource type="AudioStream" uid="uid://bbn5y5mm37ftm" path="res://ChainVictory.wav" id="4_7rogd"]
 [ext_resource type="AudioStream" uid="uid://d2mlepgvq2aal" path="res://audio/ChainsCombatLoopv2 (2).wav" id="4_fdru6"]
 
@@ -81,11 +81,11 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -76.0
-offset_top = 12.0
+offset_top = 7.0
 offset_right = 70.0
-offset_bottom = 129.0
+offset_bottom = 124.0
 grow_horizontal = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.262869, 0.65046, 0.813173, 1)
 
 [node name="ScoreLabel" type="RichTextLabel" parent="."]
 z_index = 1
@@ -104,11 +104,11 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -202.0
+offset_left = -192.0
 offset_top = -93.0
 grow_horizontal = 0
 grow_vertical = 0
-color = Color(0, 0, 0, 1)
+color = Color(0.262745, 0.65098, 0.811765, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 anchors_preset = 2
@@ -117,15 +117,16 @@ anchor_bottom = 1.0
 offset_top = -93.0
 offset_right = 172.0
 grow_vertical = 0
-color = Color(0, 0, 0, 1)
+color = Color(0.262745, 0.65098, 0.811765, 1)
 
 [node name="Player1HP" type="RichTextLabel" parent="."]
 z_index = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
 offset_top = -85.0
-offset_right = 170.0
+offset_right = 178.0
 grow_vertical = 0
 theme_override_font_sizes/normal_font_size = 50
 text = "HP: "

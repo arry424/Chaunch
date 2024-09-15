@@ -127,7 +127,7 @@ func _process(_delta):
 			multiplier = 3
 		elif last_held_object.type == "rock":
 			multiplier = 2
-		await get_tree().create_timer(BASE_WINDUP_TIME * multiplier + 0.015).timeout
+		await get_tree().create_timer(BASE_WINDUP_TIME * multiplier + 0.02).timeout
 		
 		last_collided_object.position = Vector3(0, 0, -4)
 		last_held_object.reparent(get_node("/root/Main"))

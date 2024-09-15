@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8vgypldjsf7i"]
+[gd_scene load_steps=10 format=3 uid="uid://o06ywtm5i71g"]
 
 [ext_resource type="Texture2D" uid="uid://cclpgoi40qr4i" path="res://assets/LNO_assets_textures/textures/water-texure.png" id="1_2fu1g"]
 [ext_resource type="PackedScene" uid="uid://c67rygq1e1tlb" path="res://91524-real with textures/91524-real with textures/91524-realreal.gltf" id="2_jmkfp"]
@@ -66,7 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3814, 0.705351, 11.0131)
 shape = SubResource("BoxShape3D_2cx3g")
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.89103, 0, -0.453943, 0, 1, 0, 0.453944, 0, 0.89103, 4.71724, 0.987732, 10.4273)
+transform = Transform3D(0.89103, 0, -0.453943, 0, 1, 0, 0.453944, 0, 0.89103, 4.72082, 0.987732, 10.4248)
 shape = SubResource("BoxShape3D_44fg1")
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="."]
