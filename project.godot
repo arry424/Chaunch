@@ -18,6 +18,8 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Score="*res://code/Score.gd"
+Music="*res://music.gd"
+SoundEffect="*res://sound_effect.gd"
 
 [display]
 

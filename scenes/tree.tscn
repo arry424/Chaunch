@@ -2,18 +2,19 @@
 
 [ext_resource type="Script" path="res://code/throwable.gd" id="1_40rv1"]
 [ext_resource type="PackedScene" uid="uid://m6jnbwhlogkt" path="res://scenes/big_tree.tscn" id="2_5f6qt"]
+[ext_resource type="AudioStream" uid="uid://b32vlbkoel5yj" path="res://BigHit.wav" id="3_0pedd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cia1h"]
-height = 2.1
-radius = 0.6
+height = 6.89952
+radius = 0.471
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_whu40"]
+height = 4.82112
+radius = 0.25
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5wn6y"]
-height = 2.40472
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1r6bu"]
-height = 2.07081
+height = 3.0
+radius = 0.25
 
 [node name="Tree" type="RigidBody3D"]
 collision_layer = 64
@@ -23,37 +24,33 @@ gravity_scale = 1.5
 script = ExtResource("1_40rv1")
 
 [node name="Hitbox" type="Area3D" parent="."]
-transform = Transform3D(1.32, 0, 0, 0, 1.32, 0, 0, 0, 1.32, 0, 0, 0)
+transform = Transform3D(1.32, 0, 0, 0, 1.32, 0, 0, 0, 1.32, 0, 2.11604, -0.367348)
 collision_layer = 64
 collision_mask = 0
 angular_damp_space_override = 1
 angular_damp = 59.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1.085, 0, 0, 0, 3.29, 0, 0, 0, 1.085, -1.02691, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04662, -0.391387, 0.0132879)
 shape = SubResource("CylinderShape3D_cia1h")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(0.205606, 1.58384, -0.270088, -0.881238, 0.610322, 1.05591e-08, 0.165968, 1.2785, 0.334593, 0.815315, 0.782216, 1.57461)
+transform = Transform3D(0.223485, 0.745338, -0.628112, -0.957868, 0.28721, -2.5909e-07, 0.1804, 0.601649, 0.778123, 0.815315, 0.782216, 1.57461)
 shape = SubResource("CylinderShape3D_whu40")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(0.803618, -0.913765, 0.362211, 0, 1.17766, 0.79347, -0.595145, -1.23385, 0.489089, -1.22502, 0.228158, -0.986494)
+transform = Transform3D(0.803857, -0.42788, 0.413199, 0, 0.694658, 0.71934, -0.594823, -0.578246, 0.558406, -1.45014, 0.714702, -0.921236)
 shape = SubResource("CylinderShape3D_5wn6y")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.31, 0, 0, 0, 4.545, 0, 0, 0, 1.635, -1.16, -0.411, 0)
-shape = SubResource("CylinderShape3D_1r6bu")
 
 [node name="TREE2 BIGGER ONE REAL" parent="." instance=ExtResource("2_5f6qt")]
-transform = Transform3D(47.8508, 2.18451, 14.3367, 18.8644, -5.54117, -36.366, -7.66441e-07, 74.1261, -3.14099, 0.476767, 0.372949, 0)
+transform = Transform3D(47.8508, 2.18451, 14.3367, 18.8644, -5.54117, -36.366, -7.66441e-07, 74.1261, -3.14099, 0.476767, 2.48899, -0.367348)
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.06078, -1.20617, 0.478118, 2.98023e-08, 1.55451, 1.04738, -0.785592, -1.62868, 0.645598, -1.61703, 0.301168, -1.30217)
-shape = SubResource("CylinderShape3D_5wn6y")
+[node name="soundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0pedd")
+volume_db = 10.0
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.2714, 2.09067, -0.356517, -1.16323, 0.805625, 1.3938e-08, 0.219078, 1.68762, 0.441662, 1.07622, 1.03252, 2.07849)
-shape = SubResource("CylinderShape3D_whu40")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.32, 0, 0, 0, 1.32, 0, 0, 0, 1.32, -1.38153, 1.59941, -0.349808)
+shape = SubResource("CylinderShape3D_cia1h")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtgnd1vchpslb"]
+[gd_scene load_steps=8 format=3 uid="uid://dtgnd1vchpslb"]
 
 [ext_resource type="Script" path="res://code/throwable.gd" id="1_y4y6w"]
+[ext_resource type="AudioStream" uid="uid://b32vlbkoel5yj" path="res://BigHit.wav" id="2_tblef"]
+[ext_resource type="AudioStream" uid="uid://dvpf28s87xsvr" path="res://SmallHit.mp3" id="3_j6wxu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ea77p"]
 bounce = 0.6
@@ -32,5 +34,11 @@ shape = SubResource("SphereShape3D_bmkr3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_matyi")
+
+[node name="bighit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tblef")
+
+[node name="smallhit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_j6wxu")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

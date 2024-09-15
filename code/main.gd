@@ -14,6 +14,7 @@ var bush_scn = preload("res://scenes/bush.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
+	$AudioStreamPlayer.play(Music.musicProgress)   
 	var throwable = rock_scn.instantiate()
 	for i in range(10):
 		var x = rng.randf_range(-23, 23)
@@ -40,12 +41,14 @@ func _process(_delta):
 	#print("player 2 " + str(Score.score_2))
 	score_label.text = str(Score.score_1) + "-" + str(Score.score_2)
 	if player_1.hp <= 0 or player_2.hp <= 0:
+		await get_tree().create_timer(.65).timeout
 		if player_1.hp <= 0:
 			Score.score_2 += 1
 		else:
 			Score.score_1 += 1
-			
+		
 		if Score.score_1 == 3 || Score.score_2 == 3:
+			
 			var winner = "1" if Score.score_1 == 3 else "2"
 			win.text = "Player " + winner + " Wins"
 			win.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
@@ -53,6 +56,8 @@ func _process(_delta):
 			get_tree().paused = true
 			win.get_child(0).grab_focus()
 		else:
+			Music.musicProgress = $AudioStreamPlayer.get_playback_position()
+			
 			get_tree().reload_current_scene()
 	
 

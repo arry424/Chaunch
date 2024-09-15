@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://1uoaa7gmqfad"]
+[gd_scene load_steps=6 format=3 uid="uid://1uoaa7gmqfad"]
 
 [ext_resource type="Script" path="res://code/throwable.gd" id="1_56nvl"]
+[ext_resource type="AudioStream" uid="uid://dvpf28s87xsvr" path="res://SmallHit.mp3" id="2_hgu5e"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rdmhq"]
 radius = 0.7
@@ -33,5 +34,9 @@ shape = SubResource("SphereShape3D_beax6")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 mesh = SubResource("SphereMesh_70ihd")
+
+[node name="soundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hgu5e")
+volume_db = 10.0
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
