@@ -51,13 +51,11 @@ sprint = "sprint_2"
 jump = "jump_2"
 rotate_left = "rotate_left_2"
 rotate_right = "rotate_right_2"
+pick_up = "pick_up_2"
+throw = "throw_2"
 
 [node name="Camera3D" parent="GridContainer/SubViewportContainer2/SubViewport/Player2" index="0"]
 current = true
-
-[node name="Chain" parent="GridContainer/SubViewportContainer2/SubViewport/Player2" index="2"]
-pick_up = "pick_up_2"
-throw = "throw_2"
 
 [node name="Ground" parent="." instance=ExtResource("1_68f4q")]
 
@@ -84,8 +82,18 @@ offset_bottom = 346.0
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
+[node name="ScoreLabel" type="RichTextLabel" parent="."]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_right = 30.0
+offset_bottom = 113.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 100
+
 [connection signal="button_down" from="Win/Back" to="." method="_on_back_button_down"]
 
 [editable path="GridContainer/SubViewportContainer2/SubViewport/Player2"]
-[editable path="GridContainer/SubViewportContainer2/SubViewport/Player2/Chain"]
 [editable path="Ground"]

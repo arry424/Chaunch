@@ -159,8 +159,8 @@ restart={
 
 [layer_names]
 
-3d_physics/layer_1="Player1"
-3d_physics/layer_2="Player2"
+3d_physics/layer_1="Player"
+3d_physics/layer_2="unused"
 3d_physics/layer_3="unused"
 3d_physics/layer_4="unused"
 3d_physics/layer_5="unused"
