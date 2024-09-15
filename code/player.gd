@@ -116,7 +116,7 @@ func _process(_delta):
 			multiplier = 3
 		elif last_held_object.type == "bush":
 			multiplier = 2
-		await get_tree().create_timer(BASE_WINDUP_TIME * multiplier).timeout
+		await get_tree().create_timer(BASE_WINDUP_TIME * multiplier + 0.01).timeout
 		
 		last_held_object.reparent(get_node("/root/Main"))
 		last_held_object.freeze = false

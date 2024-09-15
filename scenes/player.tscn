@@ -69,7 +69,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_mask = 195
 script = ExtResource("1_crpbl")
 
@@ -85,7 +85,7 @@ transform = Transform3D(-1.47475, 0, -0.0274376, 0, 1.475, 0, 0.0274376, 0, -1.4
 mesh = SubResource("SphereMesh_pwu7j")
 
 [node name="Chain4(snake-shaped)" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(-0.000817142, -0.000305517, 0.019981, -0.00700415, 0.0187334, -4.96648e-11, -0.0187156, -0.00699748, -0.000872389, 0.0762711, 0.0897733, -0.108995)
+transform = Transform3D(-8.18864e-10, -3.0616e-10, 0.02, -0.00700414, 0.0187334, -6.97575e-18, -0.0187334, -0.00700413, -8.74229e-10, 0.0762711, 0.0897733, -0.108995)
 mesh = ExtResource("3_dqat1")
 skeleton = NodePath("../..")
 
@@ -95,7 +95,7 @@ mesh = ExtResource("4_jy62g")
 skeleton = NodePath("../../..")
 
 [node name="Chain3(straight-tight)" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(0.00081151, 0, 0.0229856, 0, 0.023, 0, -0.0229856, 0, 0.00081151, -0.0181918, -0.0417172, -0.213752)
+transform = Transform3D(-1.00536e-09, 8.0221e-18, 0.0229999, 8.02207e-18, 0.023, -8.02207e-18, -0.0229999, 8.0221e-18, -1.00536e-09, -0.0181918, -0.0417172, -0.213752)
 visible = false
 mesh = ExtResource("4_es50w")
 skeleton = NodePath("../..")
