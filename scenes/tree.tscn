@@ -47,7 +47,7 @@ transform = Transform3D(47.8508, 2.18451, 14.3367, 18.8644, -5.54117, -36.366, -
 
 [node name="soundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_0pedd")
-volume_db = 10.0
+volume_db = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.32, 0, 0, 0, 1.32, 0, 0, 0, 1.32, -1.38153, 1.59941, -0.349808)

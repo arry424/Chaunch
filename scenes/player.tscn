@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cdt2hutstrwhb"]
+[gd_scene load_steps=22 format=3 uid="uid://cdt2hutstrwhb"]
 
 [ext_resource type="Script" path="res://code/player.gd" id="1_crpbl"]
 [ext_resource type="Texture2D" uid="uid://bxtr3f4dcfl8" path="res://scenes/360_F_331551911_zKRyH9PaATRmNR8AtllWVeXSBVQieeVT.jpg" id="2_71q7f"]
@@ -7,6 +7,8 @@
 [ext_resource type="ArrayMesh" uid="uid://82c0kuk00h7q" path="res://chains/chain3 (straight-tight).obj" id="4_es50w"]
 [ext_resource type="ArrayMesh" uid="uid://che1nnbpyey2g" path="res://chains/chain2 (S-curved).obj" id="4_jy62g"]
 [ext_resource type="Texture2D" uid="uid://5mu47p7xxwoo" path="res://scenes/blue-gradient-background-with-sparkling-light-shine-illustration-and-bokeh-lights-illustration-free-vector.jpg" id="7_0smos"]
+[ext_resource type="AudioStream" uid="uid://b6hfkwdwiq0xy" path="res://MetalRoll.wav" id="8_hpg71"]
+[ext_resource type="AudioStream" uid="uid://dki0mha8pp8rv" path="res://ChainWood.wav" id="9_f7xi1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nsyyf"]
 
@@ -143,6 +145,13 @@ mesh = SubResource("CapsuleMesh_dkcdp")
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.19, 0, 0, 0, 0.187097, -0.0330879, 0, 0.0330879, 0.187097, 0.268826, 0.273399, -0.54443)
 mesh = SubResource("CapsuleMesh_dkcdp")
+
+[node name="walking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_hpg71")
+volume_db = -2.0
+
+[node name="pick_up_se" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_f7xi1")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
