@@ -1,35 +1,121 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdt2hutstrwhb"]
+[gd_scene load_steps=12 format=3 uid="uid://cdt2hutstrwhb"]
 
 [ext_resource type="Script" path="res://code/player.gd" id="1_crpbl"]
-[ext_resource type="PackedScene" uid="uid://dh3c8ksu4np6l" path="res://scenes/chain.tscn" id="2_s6sna"]
+[ext_resource type="ArrayMesh" uid="uid://dingmpuhydg24" path="res://chains/chain4 (snake-shaped).obj" id="3_dqat1"]
+[ext_resource type="ArrayMesh" uid="uid://82c0kuk00h7q" path="res://chains/chain3 (straight-tight).obj" id="4_es50w"]
+[ext_resource type="ArrayMesh" uid="uid://che1nnbpyey2g" path="res://chains/chain2 (S-curved).obj" id="4_jy62g"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w3mry"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_nsyyf"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_kaoky"]
+[sub_resource type="SphereMesh" id="SphereMesh_pwu7j"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6uq6x"]
+height = 0.25
+radius = 2.0
+
+[sub_resource type="Animation" id="Animation_yu8oa"]
+resource_name = "spin_attack"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(0, -6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s4udq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.12299, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2sli1"]
+resource_name = "recover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ujxey"]
+_data = {
+"RESET": SubResource("Animation_s4udq"),
+"recover": SubResource("Animation_2sli1"),
+"spin_attack": SubResource("Animation_yu8oa")
+}
 
 [node name="Player" type="CharacterBody3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 collision_mask = 195
 script = ExtResource("1_crpbl")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.924699, 0.380699, 0, -0.380699, 0.924699, 0.132298, 1.98414, 3.17343)
+transform = Transform3D(1, 0, 0, 0, 0.924699, 0.380699, 0, -0.380699, 0.924699, 0.132298, 1.98414, 4.43191)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_w3mry")
-
-[node name="Chain" parent="." instance=ExtResource("2_s6sna")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -1, 2.08165e-12)
-
-[node name="CollisionShape3D" parent="Chain" index="0"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-
-[node name="MeshInstance3D" parent="Chain" index="1"]
-transform = Transform3D(0.73, 0, 0, 0, 0.73, 0, 0, 0, 0.73, 0, 0, 0)
-
-[node name="RayCast3D" parent="Chain" index="3"]
-transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -0.00178552, 0, 0.258471)
+transform = Transform3D(-1.43347, 0, 0.347535, 0, 1.475, 0, -0.347535, 0, -1.43347, 0.0139309, 0, 0.0761382)
+shape = SubResource("SphereShape3D_nsyyf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_kaoky")
+transform = Transform3D(-1.47475, 0, -0.027441, 0, 1.475, 0, 0.027441, 0, -1.47475, 0.0139309, 0, 0.0761382)
+mesh = SubResource("SphereMesh_pwu7j")
 
-[editable path="Chain"]
+[node name="Chain4(snake-shaped)" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-0.000817142, -0.000305517, 0.019981, -0.00700415, 0.0187334, -4.96648e-11, -0.0187156, -0.00699748, -0.000872389, 0.0762711, 0.0897733, -0.108995)
+mesh = ExtResource("3_dqat1")
+skeleton = NodePath("../..")
+
+[node name="Chain2(s-curved)" type="MeshInstance3D" parent="MeshInstance3D/Chain4(snake-shaped)"]
+transform = Transform3D(0.359092, -0.994929, -2.80734, -1.29484, 2.49433, -1.04962, 2.68225, 1.33732, -0.130858, 133.493, 10.4817, -39.7117)
+mesh = ExtResource("4_jy62g")
+skeleton = NodePath("../../..")
+
+[node name="Chain3(straight-tight)" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.00081151, 0, 0.0229856, 0, 0.023, 0, -0.0229856, 0, 0.00081151, -0.0181918, -0.0417172, -0.213752)
+visible = false
+mesh = ExtResource("4_es50w")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1.475, 0, 0, 0, 1.475, 0, 0, 0, 1.475, 0, -0.559276, 0)
+collision_layer = 4
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_6uq6x")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(0.995835, -0.0911714, 3.98523e-09, 0, -4.37114e-08, -1, 0.0911714, 0.995835, -4.35294e-08, -0.00178552, -0.947299, -0.47928)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ujxey")
+}
+speed_scale = 3.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
