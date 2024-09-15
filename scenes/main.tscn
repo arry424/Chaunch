@@ -1,9 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://da73hxbpx018"]
+[gd_scene load_steps=8 format=3 uid="uid://da73hxbpx018"]
 
 [ext_resource type="Script" path="res://code/main.gd" id="1_56u4r"]
-[ext_resource type="PackedScene" path="res://audio/environment.tscn" id="1_68f4q"]
+[ext_resource type="PackedScene" uid="uid://c8vgypldjsf7i" path="res://audio/environment.tscn" id="1_68f4q"]
 [ext_resource type="AudioStream" uid="uid://bbn5y5mm37ftm" path="res://ChainVictory.wav" id="4_7rogd"]
 [ext_resource type="AudioStream" uid="uid://d2mlepgvq2aal" path="res://audio/ChainsCombatLoopv2 (2).wav" id="4_fdru6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vbu50"]
+sky_top_color = Color(0.0651319, 0.487946, 0.655322, 1)
+sky_horizon_color = Color(0.347514, 0.698428, 0.888776, 1)
+ground_bottom_color = Color(0, 0.17764, 0.334459, 1)
+ground_horizon_color = Color(0.27213, 0.733439, 0.744971, 1)
+
+[sub_resource type="Sky" id="Sky_2mu8l"]
+sky_material = SubResource("ProceduralSkyMaterial_vbu50")
+
+[sub_resource type="Environment" id="Environment_y78qw"]
+background_mode = 2
+sky = SubResource("Sky_2mu8l")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_56u4r")
@@ -68,7 +81,8 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -76.0
-offset_right = 126.0
+offset_top = 12.0
+offset_right = 70.0
 offset_bottom = 129.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
@@ -101,7 +115,7 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -93.0
-offset_right = 202.0
+offset_right = 172.0
 grow_vertical = 0
 color = Color(0, 0, 0, 1)
 
@@ -139,6 +153,9 @@ one_shot = true
 
 [node name="victory_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_7rogd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y78qw")
 
 [connection signal="button_down" from="Win/Back" to="." method="_on_back_button_down"]
 
