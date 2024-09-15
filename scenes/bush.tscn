@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://1uoaa7gmqfad"]
+[gd_scene load_steps=9 format=3 uid="uid://1uoaa7gmqfad"]
 
 [ext_resource type="Script" path="res://code/throwable.gd" id="1_56nvl"]
 [ext_resource type="AudioStream" uid="uid://dvpf28s87xsvr" path="res://SmallHit.mp3" id="2_hgu5e"]
+[ext_resource type="ArrayMesh" uid="uid://dj3khjs5usq3m" path="res://scenes/Bush_Mediteranean.obj" id="2_udei0"]
+[ext_resource type="Texture2D" uid="uid://b3w4em78sjb00" path="res://scenes/360_F_362952640_nPNPT14Jf1VtZLuJBT7snEK2OBgrmwhQ.jpg" id="3_v8buy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rdmhq"]
 radius = 0.7
@@ -9,7 +11,10 @@ radius = 0.7
 [sub_resource type="SphereShape3D" id="SphereShape3D_beax6"]
 radius = 0.699064
 
-[sub_resource type="SphereMesh" id="SphereMesh_70ihd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sygtn"]
+albedo_texture = ExtResource("3_v8buy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mg8hb"]
 
 [node name="Bush" type="RigidBody3D"]
 collision_layer = 64
@@ -32,8 +37,10 @@ shape = SubResource("SphereShape3D_rdmhq")
 shape = SubResource("SphereShape3D_beax6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
-mesh = SubResource("SphereMesh_70ihd")
+transform = Transform3D(0.00752396, 0, 0, 0, 0.00662331, 0, 0, 0, 0.00899461, 2.28132, -1.11112, -1.48272)
+mesh = ExtResource("2_udei0")
+surface_material_override/0 = SubResource("StandardMaterial3D_sygtn")
+surface_material_override/1 = SubResource("StandardMaterial3D_mg8hb")
 
 [node name="soundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_hgu5e")

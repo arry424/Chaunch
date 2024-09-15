@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhwe6cv8dbre3"]
+[gd_scene load_steps=8 format=3 uid="uid://dhwe6cv8dbre3"]
 
 [ext_resource type="Script" path="res://code/throwable.gd" id="1_0o142"]
+[ext_resource type="ArrayMesh" uid="uid://bnnry06c55nkp" path="res://scenes/uploads_files_898927_rock (1).obj" id="2_eigkv"]
 [ext_resource type="AudioStream" uid="uid://dvpf28s87xsvr" path="res://SmallHit.mp3" id="2_wl6l0"]
+[ext_resource type="Texture2D" uid="uid://cruj4mjibkuic" path="res://scenes/rock.jpg" id="3_ma1c7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_25hgg"]
 radius = 0.6
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yhpyn"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_ntl3t"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynu31"]
+albedo_texture = ExtResource("3_ma1c7")
 
 [node name="rock" type="RigidBody3D"]
 collision_layer = 64
@@ -30,7 +33,9 @@ shape = SubResource("SphereShape3D_25hgg")
 shape = SubResource("SphereShape3D_yhpyn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_ntl3t")
+transform = Transform3D(0.145, 0, 0, 0, 0.145, 0, 0, 0, 0.145, 0, -0.284085, 0)
+mesh = ExtResource("2_eigkv")
+surface_material_override/0 = SubResource("StandardMaterial3D_ynu31")
 
 [node name="soundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_wl6l0")
