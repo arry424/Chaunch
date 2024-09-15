@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ct2jyph4j7d10"
+path="res://.godot/imported/BOMB OBJ VER.obj-3b5ab996ab2406dd0b5b8bc506bb1bd0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/BOMB OBJ VER.obj-3b5ab996ab2406dd0b5b8bc506bb1bd0.mesh"]
+
+source_file="res://scenes/BOMB OBJ VER.obj"
+dest_files=["res://.godot/imported/BOMB OBJ VER.obj-3b5ab996ab2406dd0b5b8bc506bb1bd0.mesh", "res://.godot/imported/BOMB OBJ VER.obj-3b5ab996ab2406dd0b5b8bc506bb1bd0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

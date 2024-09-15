@@ -1,13 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdt2hutstrwhb"]
+[gd_scene load_steps=20 format=3 uid="uid://cdt2hutstrwhb"]
 
 [ext_resource type="Script" path="res://code/player.gd" id="1_crpbl"]
+[ext_resource type="Texture2D" uid="uid://bxtr3f4dcfl8" path="res://scenes/360_F_331551911_zKRyH9PaATRmNR8AtllWVeXSBVQieeVT.jpg" id="2_71q7f"]
 [ext_resource type="ArrayMesh" uid="uid://dingmpuhydg24" path="res://chains/chain4 (snake-shaped).obj" id="3_dqat1"]
+[ext_resource type="Texture2D" uid="uid://din82i3jfrw" path="res://scenes/pexels-kasperphotography-978462.jpg" id="3_urww0"]
 [ext_resource type="ArrayMesh" uid="uid://82c0kuk00h7q" path="res://chains/chain3 (straight-tight).obj" id="4_es50w"]
 [ext_resource type="ArrayMesh" uid="uid://che1nnbpyey2g" path="res://chains/chain2 (S-curved).obj" id="4_jy62g"]
+[ext_resource type="Texture2D" uid="uid://5mu47p7xxwoo" path="res://scenes/blue-gradient-background-with-sparkling-light-shine-illustration-and-bokeh-lights-illustration-free-vector.jpg" id="7_0smos"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nsyyf"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w370j"]
+albedo_texture = ExtResource("2_71q7f")
+
 [sub_resource type="SphereMesh" id="SphereMesh_pwu7j"]
+material = SubResource("StandardMaterial3D_w370j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yrt1"]
+albedo_texture = ExtResource("3_urww0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u40pu"]
+albedo_texture = ExtResource("3_urww0")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6uq6x"]
 height = 0.25
@@ -68,6 +81,12 @@ _data = {
 "spin_attack": SubResource("Animation_yu8oa")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sddis"]
+albedo_texture = ExtResource("7_0smos")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dkcdp"]
+material = SubResource("StandardMaterial3D_sddis")
+
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 195
 script = ExtResource("1_crpbl")
@@ -85,6 +104,8 @@ mesh = SubResource("SphereMesh_pwu7j")
 
 [node name="Chain4(snake-shaped)" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(-8.18864e-10, -3.0616e-10, 0.02, -0.00700414, 0.0187334, -6.97575e-18, -0.0187334, -0.00700413, -8.74229e-10, 0.0762711, 0.0897733, -0.108995)
+material_override = SubResource("StandardMaterial3D_6yrt1")
+material_overlay = SubResource("StandardMaterial3D_u40pu")
 mesh = ExtResource("3_dqat1")
 skeleton = NodePath("../..")
 
@@ -114,6 +135,14 @@ transform = Transform3D(0.995835, -0.0911714, 3.98523e-09, 0, -4.37114e-08, -1, 
 libraries = {
 "": SubResource("AnimationLibrary_ujxey")
 }
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.19, 0, 0, 0, 0.184013, -0.0473217, 0, 0.0473217, 0.184013, -0.225992, 0.273399, -0.557736)
+mesh = SubResource("CapsuleMesh_dkcdp")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.19, 0, 0, 0, 0.187097, -0.0330879, 0, 0.0330879, 0.187097, 0.268826, 0.273399, -0.54443)
+mesh = SubResource("CapsuleMesh_dkcdp")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
